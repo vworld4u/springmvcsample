@@ -1,6 +1,8 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
+*.class
+
 ### STS ###
 .apt_generated
 .classpath
@@ -15,6 +17,14 @@ target/
 *.iml
 *.ipr
 
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
 ### NetBeans ###
 nbproject/private/
 build/
@@ -22,3 +32,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
