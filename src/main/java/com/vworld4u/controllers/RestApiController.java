@@ -1,7 +1,9 @@
 package com.vworld4u.controllers;
 
 import java.util.Date;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -43,13 +45,18 @@ public class RestApiController {
 	}
 
 	@RequestMapping(method=RequestMethod.GET, path="/profile")
-	public User profile() throws Exception {
-		throw new RuntimeException("Not yet implemented");
+	public User profile(final HttpServletRequest request) throws Exception {
+		log.info("getProfile: ....");
+		Map<String, Object> map = (Map<String, Object>) request.getAttribute("user");
+		User user = userService.getUserById(((Number) map.get("id")).longValue());
+		log.info("getProfile: " + user);
+		return user;
 	}
 
 	@RequestMapping(method=RequestMethod.PUT, path="/profile")
-	public User profile(User user) throws Exception {
-		throw new RuntimeException("Not yet implemented");
+	public User profile(@RequestBody User user) throws Exception {
+		User savedUser = userService.editUser(user);
+		return savedUser;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, path="/hello")
